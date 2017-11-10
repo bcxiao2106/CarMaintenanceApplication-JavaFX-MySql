@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="950"  xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carmaintenanceapplication.FXMLCarMaintenanceController">
+    <top>       
+        <GridPane alignment="center">
+            <ImageView fx:id="logoImgView" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <image><Image url="@logo.png"/></image>
+            </ImageView>
+            <ToolBar fx:id="toolBarTop" prefHeight="50" prefWidth="950" styleClass="toolBox" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <items>
+                    <TextField fx:id="userInputTextField" prefWidth="320" promptText="key words: Name/Address"></TextField>
+                    <ComboBox fx:id="serviceTypeComboBox" prefWidth="150" promptText="Service Type">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="All" />
+                                <String fx:value="Maintenance" />
+                                <String fx:value="Repair" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <DatePicker fx:id="startDatePicker" prefWidth="135" promptText="Start Date"></DatePicker>
+                    <DatePicker fx:id="endDatePicker" prefWidth="135" promptText="End Date"></DatePicker>
+                    <Button fx:id="btnLoad" mnemonicParsing="false" text="Search" onAction="#loadDataFromDatabase" styleClass="btn-default"></Button>
+                    <Button fx:id="btnExit" mnemonicParsing="false" text="Quit" onAction="#quitApplication" styleClass="btn-warning"></Button>
+                </items>
+            </ToolBar>
+        </GridPane>
+    </top>
+    <center>
+        <TableView fx:id="carmTableView" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="table-view">
+            <columns>
+                <TableColumn fx:id="columnDescription" prefWidth="120" text="DESCRIPTION" />
+                <TableColumn fx:id="columnName" prefWidth="70" text="NAME" />
+                <TableColumn fx:id="columnStreet" prefWidth="110" text="STREET" />
+                <TableColumn fx:id="columnCity" prefWidth="70" text="CITY" />
+                <TableColumn fx:id="columnState" prefWidth="50" text="STATE" />
+                <TableColumn fx:id="columnZipcode" prefWidth="50" text="ZIPCODE" />
+                <TableColumn fx:id="columnDate" prefWidth="75" text="DATE" />
+                <TableColumn fx:id="columnCost" prefWidth="50" text="COST" />
+                <TableColumn fx:id="columnComments" prefWidth="120" text="COMMENTS" />
+                <TableColumn fx:id="columnParts" prefWidth="50" text="PARTS" />
+                <TableColumn fx:id="columnWarrantyUnits" prefWidth="56" text="WARRANTY UNITS" />
+                <TableColumn fx:id="columnWarrantyTime" prefWidth="56" text="WARRANTY TIME" />
+                <TableColumn fx:id="columnDelete" prefWidth="70" text="DELETE" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <GridPane alignment="center">
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="950" styleClass="h6" text=" * 'DOUBLE CLICK' to edit, press 'ENTER' to save the change"></Label> 
+            <Separator prefHeight="2" prefWidth="950" GridPane.columnIndex="0" GridPane.rowIndex="1"></Separator>     
+            <ToolBar prefWidth="950" prefHeight="50.0" styleClass="toolBox" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <items>
+                    <ComboBox fx:id="descriptionComboBox" prefWidth="130" promptText="*Service Type"></ComboBox>
+                    <TextField fx:id="nameTextField" prefWidth="80" promptText="*Name"></TextField>
+                    <TextField fx:id="streetTextField" prefWidth="90" promptText="*Street"></TextField>
+                    <TextField fx:id="cityTextField" prefWidth="90" promptText="City"></TextField>
+                    <TextField fx:id="stateTextField" prefWidth="50" promptText="State"></TextField>
+                    <TextField fx:id="zipcodeTextField" prefWidth="50" promptText="Zipcode"></TextField>
+                    <DatePicker fx:id="dateTextField" prefWidth="100" promptText="*Date"></DatePicker>
+                    <TextField fx:id="costTextField" prefWidth="70" promptText="*Cost"></TextField>
+                    <TextField fx:id="commentsTextField" prefWidth="100" promptText="Comments"></TextField>
+                    <Button fx:id="btnAddNew" prefWidth="80" mnemonicParsing="false" text="Add New" onAction="#addNewRecord" styleClass="btn-default"></Button>
+                </items>
+            </ToolBar>
+        </GridPane>
+    </bottom>
+</BorderPane>
